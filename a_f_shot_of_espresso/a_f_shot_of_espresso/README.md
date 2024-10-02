@@ -1,16 +1,10 @@
 # a_f_shot_of_espresso
 
-A new Flutter project.
+Con todas las funcionalidades pedidas, clicks funcionando, iconos que representan cada cosa.
+Funcionalidades; Nueva receta (Permite escribir pero, no se guardan todavia)
+Ver una receta ya guardada.
+Ver recetas favoritas.
 
-## Getting Started
+El codigo se encuentra todo comentado. 
 
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+Link para video: https://youtu.be/h1yVTEVmKrE

@@ -13,24 +13,25 @@ class A_f_shot_of_espresso extends StatelessWidget
   Widget build(BuildContext context) 
   {
     return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'Emma s Coffe Shop',
+      debugShowCheckedModeBanner: false, //Una función que encontré en google que oculta el banner de depuración
+      title: 'Emma s Coffe Shop', //Nombre de la App
       theme: ThemeData(
-        primarySwatch: Colors.brown,
+        primarySwatch: Colors.brown, //Aca defino el tema de la app
       ),
-      home: SplashScreen(),
+      home: SplashScreen(),// aca defino la Pantalla principal de inicio como splash screen
       routes: 
       {
-        '/home': (context) => HomeScreen(),
-        '/recipe-detail': (context) => RecipeDetailScreen(),
-        '/create-recipe': (context) => CreateRecipeScreen(),
-        '/favorites': (context) => FavoritesScreen(),
+        '/home': (context) => HomeScreen(), //Ruta a pantalla principal
+        '/recipe-detail': (context) => RecipeDetailScreen(), //Ruta a la pantalla de las recetas
+        '/create-recipe': (context) => CreateRecipeScreen(), //Ruta para la pantalla de crear las recetas
+        '/favorites': (context) => FavoritesScreen(), //Ruta para la pantalla de los favoritos.
       },
     );
   }
 }
 
 class SplashScreen extends StatelessWidget 
+//Pantalla de Splash art con un delay de 5s por la función de la linea 39 para redirigir a la principal.
 {
   @override
   Widget build(BuildContext context) 
@@ -52,7 +53,8 @@ class SplashScreen extends StatelessWidget
           children: 
           [
 
-            Icon(Icons.local_cafe, size: 75, color: Colors.white),
+            Icon(Icons.local_cafe, size: 75, color: Colors.white), 
+            //Existian iconos de una libreria de Flutter llamada Material Icons, muy util para los trabajos asi, los saqué todos desde eso.
             SizedBox(height: 20),
 
             Text
@@ -69,6 +71,7 @@ class SplashScreen extends StatelessWidget
 
 
 class HomeScreen extends StatelessWidget 
+// Pantalla principal de la aplicación.
 {
   @override
   Widget build(BuildContext context) 
@@ -83,7 +86,7 @@ class HomeScreen extends StatelessWidget
         padding: EdgeInsets.all(10),
         children: 
         [
-          _buildCard
+          _buildCard //Metodo para crear distintos widgets de tipo card, para simplificar el codigo 
           (
             context,
             'Ver recetas',
@@ -110,6 +113,7 @@ class HomeScreen extends StatelessWidget
   }
 
   Widget _buildCard(BuildContext context, String title, IconData icon, String route) 
+  // Crea un widget de tarjeta reutilizable con un icono, texto y una ruta para navegar y simplificar el Codigo.
   {
     return Card
     (
@@ -119,7 +123,7 @@ class HomeScreen extends StatelessWidget
         title: Text(title, style: TextStyle(fontSize: 30)),
         onTap: () 
         {
-          Navigator.pushNamed(context, route);
+          Navigator.pushNamed(context, route); //función que va hacia la ruta especifica.
         },
       ),
     );
@@ -127,7 +131,9 @@ class HomeScreen extends StatelessWidget
 }
 
 
-class RecipeDetailScreen extends StatelessWidget {
+class RecipeDetailScreen extends StatelessWidget 
+{
+//Pantalla para mostrar detalles de la receta
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -161,13 +167,15 @@ class RecipeDetailScreen extends StatelessWidget {
 
 class CreateRecipeScreen extends StatefulWidget 
 {
+  // Pantalla para crear una nueva receta, la puse como StatefulWidget para que pueda tener cambios de estado
   @override
   _CreateRecipeScreenState createState() => _CreateRecipeScreenState();
 }
 
 class _CreateRecipeScreenState extends State<CreateRecipeScreen> 
 {
-  final _formKey = GlobalKey<FormState>();
+
+  final _formKey = GlobalKey<FormState>(); //Clave global para el formulario, más abajo, en la linea 197 se asigna el formulario a la clave global.
   String _recipeName = '';
   String _ingredients = '';
   String _steps = '';
@@ -219,9 +227,10 @@ class _CreateRecipeScreenState extends State<CreateRecipeScreen>
               (
                 onPressed: ()
                  {
-                  _formKey.currentState!.save();
+                  _formKey.currentState!.save(); // Guarda los datos del formulario creado.
                   // Save recipe logic
-                  ScaffoldMessenger.of(context).showSnackBar(
+                  ScaffoldMessenger.of(context).showSnackBar
+                  (
                     SnackBar(content: Text('Receta guardada!')),
                   );
                 },
@@ -237,7 +246,9 @@ class _CreateRecipeScreenState extends State<CreateRecipeScreen>
 
 
 
-class FavoritesScreen extends StatelessWidget {
+class FavoritesScreen extends StatelessWidget 
+{
+  //Pantalla para las recetas Favoritas.
   @override
   Widget build(BuildContext context) {
     return Scaffold(
