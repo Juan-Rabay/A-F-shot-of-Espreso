@@ -1,8 +1,4 @@
 import 'package:flutter/material.dart';
-import 'screens/home_screen.dart';
-import 'screens/recipe_detail_screen.dart';
-import 'screens/create_recipe_screen.dart';
-import 'screens/favorites_screen.dart';
 
 void main() {
   runApp(CoffeeRecipesApp());
@@ -138,10 +134,23 @@ class _CreateRecipeScreenState extends State<CreateRecipeScreen> {
   String _steps = '';
 
   @override
+  void initState() {
+    super.initState();
+    print("initState: Widget creado");
+  }
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    print("didChangeDependencies: Dependencias cambiadas");
+  }
+
+  @override
   Widget build(BuildContext context) {
+    print("build: Construyendo el widget");
     return Scaffold(
       appBar: AppBar(
-        title: Text('Create New Recipe'),
+        title: Text('Crear nueva receta', style: TextStyle(fontSize: 24)),
       ),
       body: Padding(
         padding: EdgeInsets.all(16.0),
@@ -150,19 +159,19 @@ class _CreateRecipeScreenState extends State<CreateRecipeScreen> {
           child: Column(
             children: [
               TextFormField(
-                decoration: InputDecoration(labelText: 'Recipe Name'),
+                decoration: InputDecoration(labelText: 'Nombre de la receta'),
                 onSaved: (value) {
                   _recipeName = value!;
                 },
               ),
               TextFormField(
-                decoration: InputDecoration(labelText: 'Ingredients'),
+                decoration: InputDecoration(labelText: 'Ingredientes'),
                 onSaved: (value) {
                   _ingredients = value!;
                 },
               ),
               TextFormField(
-                decoration: InputDecoration(labelText: 'Steps'),
+                decoration: InputDecoration(labelText: 'Pasos'),
                 onSaved: (value) {
                   _steps = value!;
                 },
@@ -171,18 +180,42 @@ class _CreateRecipeScreenState extends State<CreateRecipeScreen> {
               ElevatedButton(
                 onPressed: () {
                   _formKey.currentState!.save();
-                  // Save recipe logic
+                  print("setState: Guardando la receta");
                   ScaffoldMessenger.of(context).showSnackBar(
-                    SnackBar(content: Text('Recipe Saved!')),
+                    SnackBar(content: Text('Receta guardada!')),
                   );
                 },
-                child: Text('Save Recipe'),
+                child: Text('Salvar receta', style: TextStyle(fontSize: 24)),
               ),
             ],
           ),
         ),
       ),
     );
+  }
+
+  @override
+  void didUpdateWidget(covariant CreateRecipeScreen oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    print("didUpdateWidget: Widget actualizado");
+  }
+
+  @override
+  void deactivate() {
+    super.deactivate();
+    print("deactivate: Widget desactivado");
+  }
+
+  @override
+  void dispose() {
+    print("dispose: Widget eliminado");
+    super.dispose();
+  }
+
+  @override
+  void reassemble() {
+    super.reassemble();
+    print("reassemble: Aplicación reconstruida");
   }
 }
 
